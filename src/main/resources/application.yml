@@ -1,0 +1,45 @@
+# konfigurasi oauth2 di spring 1.5.1
+security:
+    oauth2:
+        resource:
+            filter-order: 3
+
+spring:
+    #konfigurasi jackson
+    jackson:
+        serialization:
+            indent-output: true
+            
+    # spring datasource jpa
+    datasource: 
+        driver-class-name: org.mariadb.jdbc.Driver
+        url: jdbc:mariadb://127.0.0.1:3306/springecommerce?autoReconnect=true
+        username: root
+        password: 
+        poolName: SpringBootHikariCP
+        maximumPoolSize: 5
+        minimumIdle: 3
+        maxLifetime: 2000000
+        connectionTimeout: 30000
+        idleTimeout: 30000
+        
+    # spring hibernate    
+    jpa: 
+        show-sql: true
+        properties: 
+            hibernate: 
+                format_sql: true
+                
+# konfigurasi flyway / database migration
+flyway:
+    locations:
+        classpath: db/migration
+
+# konfigurasi log        
+logging:
+    level:
+        org:
+            springframework:
+                web: DEBUG
+            hibernate: DEBUG    
+            flywaydb: DEBUG
